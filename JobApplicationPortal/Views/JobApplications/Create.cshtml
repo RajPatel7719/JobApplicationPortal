@@ -1,0 +1,294 @@
+﻿@model JobApplicationPortal.Models.JobApplication
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>JobApplication</h4>
+<hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create" method="post" id="jobApplicationForm">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Basic Details -->
+            <div class="form-group">
+                <label asp-for="FirstName"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender"></label>
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact"></label>
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+            <br />
+            <!-- Education Details -->
+            <div class="education-details">
+                <div class="d-flex">
+                    <h4>Education Details</h4>
+                    <button type="button" class="btn btn-primary add-education-detail" style="margin-left:15px;">Add More</button>
+                </div>
+                <div class="education-detail">
+                    <div class="form-group">
+                        <label>Board/University</label>
+                        <input type="text" asp-for="EducationDetails[0].BoardUniversity" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Year</label>
+                        <input type="number" asp-for="EducationDetails[0].Year" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>CGPA/Percentage</label>
+                        <input type="text" asp-for="EducationDetails[0].CGPA" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <!-- Work Experiences -->
+            <div class="work-experiences">
+                <div class="d-flex">
+                    <h4>Work Experiences</h4>
+                    <button type="button" class="btn btn-primary add-work-experience" style="margin-left:15px;">Add More</button>
+                </div>
+                <div class="work-experience">
+                    <div class="form-group">
+                        <label>Company</label>
+                        <input type="text" asp-for="WorkExperiences[0].Company" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Designation</label>
+                        <input type="text" asp-for="WorkExperiences[0].Designation" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>From</label>
+                        <input type="date" asp-for="WorkExperiences[0].FromDate" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>To</label>
+                        <input type="date" asp-for="WorkExperiences[0].ToDate" class="form-control" />
+                    </div>
+                </div>
+            </div>
+            <br />
+            <!-- Known Languages -->
+            <div class="known-languages">
+                <div class="d-flex">
+                    <h4>Known Languages</h4>
+                    <button type="button" class="btn btn-primary add-known-language" style="margin-left:15px;">Add More</button>
+                </div>
+                <div class="form-group">
+                    <label>Language</label>
+                    <select name="KnownLanguages[0].Language" class="form-control known-language-select">
+                        <option value="">Select Language</option>
+                        <option value="Hindi">Hindi</option>
+                        <option value="English">English</option>
+                        <option value="Gujarati">Gujarati</option>
+                    </select>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" asp-for="KnownLanguages[0].CanRead" class="form-check-input" disabled />
+                    <label class="form-check-label">Can Read</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" asp-for="KnownLanguages[0].CanWrite" class="form-check-input" disabled />
+                    <label class="form-check-label">Can Write</label>
+                </div>
+                <div class="form-check">
+                    <input type="checkbox" asp-for="KnownLanguages[0].CanSpeak" class="form-check-input" disabled />
+                    <label class="form-check-label">Can Speak</label>
+                </div>
+            </div>
+            <br />
+            <!-- Technical Skills -->
+            <div class="technical-skills">
+                <div class="d-flex">
+                    <h4>Technical Skills</h4>
+                    <button type="button" class="btn btn-primary add-technical-skill" style="margin-left:15px;">Add More</button>
+                </div>
+                <div class="technical-skill">
+                    <div class="form-group">
+                        <label>Technology</label>
+                        <input type="text" asp-for="TechnicalSkills[0].Technology" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <label>Proficiency Level</label>
+                        <select name="TechnicalSkills[0].ProficiencyLevel" class="form-control">
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <!-- Preferences -->
+            <div class="form-group">
+                <label asp-for="PreferredLocation"></label>
+                <input asp-for="PreferredLocation" class="form-control" />
+                <span asp-validation-for="PreferredLocation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ExpectedCTC"></label>
+                <input asp-for="ExpectedCTC" class="form-control" />
+                <span asp-validation-for="ExpectedCTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentCTC"></label>
+                <input asp-for="CurrentCTC" class="form-control" />
+                <span asp-validation-for="CurrentCTC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="NoticePeriod"></label>
+                <input asp-for="NoticePeriod" class="form-control" />
+                <span asp-validation-for="NoticePeriod" class="text-danger"></span>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</div>
+<br />
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+            var educationDetailIndex = 0;
+            var workExperienceIndex = 0;
+            var knownLanguageIndex = 0;
+            var technicalSkillIndex = 0;
+
+            $(".add-education-detail").click(function () {
+                var educationDetailHtml = '<div class="education-detail">' +
+                    '<div class="form-group">' +
+                    '<label>Board/University</label>' +
+                    '<input type="text" name="EducationDetails[' + educationDetailIndex + '].BoardUniversity" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>Year</label>' +
+                    '<input type="number" name="EducationDetails[' + educationDetailIndex + '].Year" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>CGPA/Percentage</label>' +
+                    '<input type="text" name="EducationDetails[' + educationDetailIndex + '].CGPA" class="form-control" />' +
+                    '</div>' +
+                    '</div>';
+
+                $(".education-details").append(educationDetailHtml);
+                educationDetailIndex++;
+            });
+
+            $(".add-work-experience").click(function () {
+                var workExperienceHtml = '<div class="work-experience">' +
+                    '<div class="form-group">' +
+                    '<label>Company</label>' +
+                    '<input type="text" name="WorkExperiences[' + workExperienceIndex + '].Company" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>Designation</label>' +
+                    '<input type="text" name="WorkExperiences[' + workExperienceIndex + '].Designation" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>From</label>' +
+                    '<input type="date" name="WorkExperiences[' + workExperienceIndex + '].FromDate" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>To</label>' +
+                    '<input type="date" name="WorkExperiences[' + workExperienceIndex + '].ToDate" class="form-control" />' +
+                    '</div>' +
+                    '</div>';
+
+                $(".work-experiences").append(workExperienceHtml);
+                workExperienceIndex++;
+            });
+
+            $(".add-known-language").click(function () {
+                var knownLanguageHtml = '<div class="known-language">' +
+                    '<div class="form-group">' +
+                    '<label>Language</label>' +
+                    '<select name="KnownLanguages[' + knownLanguageIndex + '].Language" class="form-control language-select">' +
+                    '<option value="">Select Language</option>' +
+                    '<option value="Hindi">Hindi</option>' +
+                    '<option value="English">English</option>' +
+                    '<option value="Gujarati">Gujarati</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '<div class="form-check">' +
+                    '<input type="checkbox" name="KnownLanguages[' + knownLanguageIndex + '].CanRead" class="form-check-input " disabled />' +
+                    '<label class="form-check-label">Can Read</label>' +
+                    '</div>' +
+                    '<div class="form-check">' +
+                    '<input type="checkbox" name="KnownLanguages[' + knownLanguageIndex + '].CanWrite" class="form-check-input" disabled />' +
+                    '<label class="form-check-label">Can Write</label>' +
+                    '</div>' +
+                    '<div class="form-check">' +
+                    '<input type="checkbox" name="KnownLanguages[' + knownLanguageIndex + '].CanSpeak" class="form-check-input" disabled />' +
+                    '<label class="form-check-label">Can Speak</label>' +
+                    '</div>' +
+                    '</div>';
+
+                $(".known-languages").append(knownLanguageHtml);
+                knownLanguageIndex++;
+            });
+
+            $(".add-technical-skill").click(function () {
+                var technicalSkillHtml = '<div class="technical-skill">' +
+                    '<div class="form-group">' +
+                    '<label>Technology</label>' +
+                    '<input type="text" name="TechnicalSkills[' + technicalSkillIndex + '].Technology" class="form-control" />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>Proficiency Level</label>' +
+                    '<select name="TechnicalSkills[' + technicalSkillIndex + '].ProficiencyLevel" class="form-control">' +
+                    '<option value="Beginner">Beginner</option>' +
+                    '<option value="Intermediate">Intermediate</option>' +
+                    '<option value="Expert">Expert</option>' +
+                    '</select>' +
+                    '</div>' +
+                    '</div>';
+
+                $(".technical-skills").append(technicalSkillHtml);
+                technicalSkillIndex++;
+            });
+
+            $(document).on("change", "select[name^='KnownLanguages']", function () {
+                var index = $(this).attr("name").match(/\d+/)[0];
+                var isChecked = $(this).val() !== "";
+
+                $("input[name='KnownLanguages[" + index + "].CanRead']").prop("disabled", !isChecked);
+                $("input[name='KnownLanguages[" + index + "].CanWrite']").prop("disabled", !isChecked);
+                $("input[name='KnownLanguages[" + index + "].CanSpeak']").prop("disabled", !isChecked);
+            });
+        });
+    </script>
+
+}
